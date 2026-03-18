@@ -5,25 +5,32 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 1. What was broken when you started?
 
 - What did the game look like the first time you ran it?
-- List at least two concrete bugs you noticed at the start  
+- List at least two concrete bugs you noticed at the start
   (for example: "the secret number kept changing" or "the hints were backwards").
 
----
+--- The game looked like less engaging and the layout out and setup were rondom instead of being user intiution friendly.
+_ Three bugs I noticed are the hints were backwards instead of leadong to the right direction, when restarting a new game after the first attempt the game does not start as a new and it gets stuck, and the difficulty level are not arranged from e
 
 ## 2. How did you use AI as a teammate?
 
 - Which AI tools did you use on this project (for example: ChatGPT, Gemini, Copilot)?
+* I used copilot
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
+* Correct suggestion: Copilot suggested storing the secret number in `st.session_state` and only creating it once, instead of recreating it on reruns. This was correct because the secret stopped changing every time I clicked Submit. I verified it by opening Developer Debug Info and watching the secret stay stable until New Game or difficulty change.
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
+* Incorrect/misleading suggestion: one AI-generated version used mixed types by turning the secret into a string on some attempts, which caused unreliable comparisons. This was misleading because it made win checks inconsistent depending on attempt flow. I verified the problem by reading the code path and then confirming the fix with targeted pytest regression tests.
 
 ---
 
 ## 3. Debugging and testing your fixes
 
 - How did you decide whether a bug was really fixed?
-- Describe at least one test you ran (manual or using pytest)  
+* I treated a bug as fixed only when both manual gameplay and automated tests matched expected behavior. I checked the game UI and Developer Debug Info to make sure state and hints behaved consistently. If either manual behavior or tests disagreed, I kept iterating.
+- Describe at least one test you ran (manual or using pytest)
   and what it showed you about your code.
+* I ran `PYTHONPATH=. pytest -q` and used tests that specifically check reversed hints, difficulty ranges, parse errors, and mixed-type secret handling. These tests showed the logic functions now return the expected outcomes and messages. I also manually changed difficulty and started a new game to confirm state resets correctly.
 - Did AI help you design or understand any tests? How?
+* Yes. Copilot helped propose regression-style tests for each fixed bug so I could verify behavior directly. It helped me map each gameplay issue to one function-level test in `logic_utils.py` behavior through `tests/test_game_logic.py`.
 
 ---
 
