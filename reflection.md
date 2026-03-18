@@ -9,7 +9,7 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
   (for example: "the secret number kept changing" or "the hints were backwards").
 
 --- The game looked like less engaging and the layout out and setup were rondom instead of being user intiution friendly.
-_ Three bugs I noticed are the hints were backwards instead of leadong to the right direction, when restarting a new game after the first attempt the game does not start as a new and it gets stuck, and the difficulty level are not arranged from e
+_ Three bugs I noticed were that the hints were backwards, the new game flow sometimes got stuck, and difficulty behavior felt inconsistent.
 
 ## 2. How did you use AI as a teammate?
 
@@ -37,8 +37,11 @@ _ Three bugs I noticed are the hints were backwards instead of leadong to the ri
 ## 4. What did you learn about Streamlit and state?
 
 - In your own words, explain why the secret number kept changing in the original app.
+* The secret number kept changing because Streamlit reruns the script after each interaction, and the value was being regenerated during reruns.
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
+* I would say reruns are like replaying the whole script every click, and `session_state` is the memory that keeps values between those reruns.
 - What change did you make that finally gave the game a stable secret number?
+* I stored the secret in `st.session_state` and only initialized it when it did not already exist, then reset it only on New Game or difficulty change.
 
 ---
 
@@ -46,5 +49,8 @@ _ Three bugs I noticed are the hints were backwards instead of leadong to the ri
 
 - What is one habit or strategy from this project that you want to reuse in future labs or projects?
   - This could be a testing habit, a prompting strategy, or a way you used Git.
+* I want to keep writing small regression tests right after each fix so I can quickly confirm bugs do not come back.
 - What is one thing you would do differently next time you work with AI on a coding task?
+* Next time I would ask AI for smaller, step-by-step changes and verify each one immediately instead of applying big edits at once.
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+* This project showed me AI code can speed up development, but it still needs careful review and testing. I now treat AI output as a draft, not a final answer.

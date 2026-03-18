@@ -3,7 +3,7 @@
 ## 🚨 The Situation
 
 You asked an AI to build a simple "Number Guessing Game" using Streamlit.
-It wrote the code, ran away, and now the game is unplayable. 
+It wrote the code, ran away, and now the game is unplayable.
 
 - You can't win.
 - The hints lie to you.
@@ -31,7 +31,15 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- [x] Fixed winning game screenshot
+
+![Winning game screenshot](screenshots/winning_screenshot.png)
+
+## ✅ Challenge 1: Advanced Edge-Case Testing
+
+- [x] Pytest results screenshot showing passing tests
+
+![Pytest passing results](screenshots/pytest_screenshort.png)
 
 ## 🚀 Stretch Features
 
